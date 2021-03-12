@@ -1,0 +1,143 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- thank
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- whats_on
+- get_weather
+- how_to_enter
+- choose
+- competitor
+- query_knowledge_base
+- need_service_provider
+- need_service
+- show_me_testsheet
+
+entities:
+- arena
+- user_type
+- service_provider
+- service_type
+- service
+- facility
+- testsheets
+- testsheet
+- object_type
+- mention
+- attribute
+- hotel
+- restaurant
+- cuisine
+- city
+
+slots:
+  location:
+    type: text
+  user_type:
+    type: categorical
+    values:
+    - competitor
+    - supporting
+    - judge
+    - spectator
+    - team
+  object_type:
+    type: unfeaturized
+  mention:
+    type: unfeaturized
+  attribute:
+    type: unfeaturized
+  hotel:
+    type: unfeaturized
+  restaurant:
+    type: unfeaturized
+  cuisine:
+    type: unfeaturized
+  city:
+    type: unfeaturized
+  service_provider:
+    type: unfeaturized
+  service_type:
+    type: unfeaturized
+  service:
+    type: unfeaturized
+  testsheets:
+    type: list
+  testsheet:
+    type: unfeaturized
+responses:
+  utter_greet:
+  - buttons:
+    - payload: '/choose{"user_type": "competitor"}'
+      title: I'm a competitor
+    - payload: '/choose{"user_type": "support"}'
+      title: I'm supporting a competitor
+    - payload: '/choose{"user_type": "judge"}'
+      title: I'm a judge
+    - payload: '/choose{"user_type": "spectator"}'
+      title: I'm a spectator
+    - payload: '/choose{"user_type": "team"}'
+      title: I'm part of the event team
+    text: Welcome to the Castlefreke Dressage Show.  I'm the event bot and I can help
+      you quickly get information about the show. I can help you better if I know
+      your role?
+  utter_welcome_competitor:
+  - text: I can check your entries...
+  utter_welcome_support:
+  - text: Which competitor(s) are you supporting.  I can check their schedule...
+  utter_welcome_judge:
+  - text: Login to get a copy of your schedule and receive  updates during the day.
+  utter_welcome_spectator:
+  - text: Would you like to know what classes are on now?
+  utter_welcome_team:
+  - text: Please check in to let Mary the Organiser know you are available.
+
+  utter_whats_on_now:
+  - text: Arena 1 - Preliminary Dressage Test DI 13 sponsored by Horseware Ireland, Arena 2 - Medium Dressage DI M57 sponsored by Bucus
+
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot!  You can ask me all kinds of questions about this event.  Go
+      on get creative!
+  utter_how_to_enter:
+  - buttons:
+    - payload: https://skor.ie
+      title: I want to enter online
+    - payload: http:/.ie/map.jpg
+      title: show me a map
+    text: You can enter online or entries are being taken in the tent next to Arena
+      1
+  utter_arena_1_schedule:
+  - text: text
+
+actions:
+- action_show_schedule
+- action_weather
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_how_to_enter
+- utter_arena_1_schedule
+- utter_welcome_competitor
+- action_query_knowledge_base
+- action_service_providers
+- action_show_testsheet
+
